@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Decision Tree and Random Forest Study Guide</title>
+    <style>
+        /* Basic styles */
+        body { font-family: Arial, sans-serif; }
+        .tab { padding: 10px; border: 1px solid #ccc; display: inline-block; cursor: pointer; }
+        .active { background-color: #007BFF; color: white; }
+        .section { display: none; padding: 20px; border: 1px solid #ccc; margin-top: 10px; }
+        .section.active { display: block; }
+        .badge { display: inline-block; padding: 5px 10px; border-radius: 5px; color: white; }
+        .bb { background-color: #007BFF; }
+        .bg { background-color: #28A745; }
+        .ba { background-color: #17A2B8; }
+        .bp { background-color: #DC3545; }
+        .node-root { font-weight: bold; }
+        .node-int { color: green; }
+        .node-leaf { color: orange; }
+        pre { background-color: #f8f9fa; padding: 10px; border-radius: 5px; overflow-x: auto; }
+        .kw { color: blue; }
+        .fn { color: red; }
+        .st { color: brown; }
+        .cm { color: grey; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Decision Tree and Random Forest Study Guide</h1>
+        <button onclick="toggleDarkMode()">Toggle Dark Mode</button>
+    </header>
+    <div class="tabs">
+        <div class="tab active" onclick="sw(1)">1. Train DT</div>
+        <div class="tab" onclick="sw(2)">2. Visualize tree</div>
+        <div class="tab" onclick="sw(3)">3. Root & leaf</div>
+        <div class="tab" onclick="sw(4)">4. Evaluate DT</div>
+        <div class="tab" onclick="sw(5)">5. DT vs SVM</div>
+        <div class="tab" onclick="sw(6)">6. Random Forest</div>
+        <div class="tab" onclick="sw(7)">7. DT vs RF</div>
+        <div class="tab" onclick="sw(8)">8. Teacher Q&amp;A</div>
+    </div>
+    <div class="sections">
+        <div class="section active" id="section1">
+            <h2>Train Decision Tree</h2>
+            <p>To train a decision tree model in Python:</p>
+            <pre>
+<code class="kw">from</code> sklearn.tree <code class="fn">import</code> DecisionTreeClassifier
+
+model = DecisionTreeClassifier()
+model.fit(X_train, y_train)
+            </pre>
+            <span class="badge bb">Beginner</span>
+        </div>
+        <div class="section" id="section2">
+            <h2>Visualize Tree</h2>
+            <p>Use the following code to visualize the tree:</p>
+            <pre>
+<code class="kw">from</code> sklearn.tree <code class="fn">import</code> plot_tree
+
+plot_tree(model)
+            </pre>
+        </div>
+        <div class="section" id="section3">
+            <h2>Root & Leaf Nodes</h2>
+            <p>Root Node and Leaf Nodes are indicated as follows:</p>
+            <div class="node-root">Root Node</div>
+            <div class="node-leaf">Leaf Node</div>
+        </div>
+        <div class="section" id="section4">
+            <h2>Evaluate Decision Tree</h2>
+            <p>To evaluate the model:</p>
+            <pre>
+<code class="kw">from</code> sklearn.metrics <code class="fn">import</code> accuracy_score
+
+score = accuracy_score(y_test, model.predict(X_test))
+            </pre>
+            <span class="badge bg">Intermediate</span>
+        </div>
+        <div class="section" id="section5">
+            <h2>DT vs SVM</h2>
+            <p>Comparison of Decision Trees and Support Vector Machines:</p>
+            <table>
+                <tr>
+                    <th>Feature</th>
+                    <th>Decision Tree</th>
+                    <th>SVM</th>
+                </tr>
+                <tr>
+                    <td>Interpretability</td>
+                    <td>High</td>
+                    <td>Low</td>
+                </tr>
+                <tr>
+                    <td>Training Time</td>
+                    <td>Fast</td>
+                    <td>Slow</td>
+                </tr>
+            </table>
+        </div>
+        <div class="section" id="section6">
+            <h2>Random Forest</h2>
+            <p>Random Forest is an ensemble method:</p>
+            <pre>
+<code class="kw">from</code> sklearn.ensemble <code class="fn">import</code> RandomForestClassifier
+
+rf_model = RandomForestClassifier()
+rf_model.fit(X_train, y_train)
+            </pre>
+            <span class="badge ba">Advanced</span>
+        </div>
+        <div class="section" id="section7">
+            <h2>DT vs RF</h2>
+            <p>Decision Tree vs Random Forest:</p>
+            <table>
+                <tr>
+                    <th>Aspect</th>
+                    <th>Decision Tree</th>
+                    <th>Random Forest</th>
+                </tr>
+                <tr>
+                    <td>Overfitting</td>
+                    <td>Higher</td>
+                    <td>Lower</td>
+                </tr>
+                <tr>
+                    <td>Accuracy</td>
+                    <td>Varies</td>
+                    <td>Generally higher</td>
+                </tr>
+            </table>
+        </div>
+        <div class="section" id="section8">
+            <h2>Teacher Q&amp;A</h2>
+            <p>Questions and Answers:</p>
+            <div>Q: What is the bias-variance tradeoff?</div>
+            <div>A: It refers to the balance between error from bias and variance.</div>
+        </div>
+    </div>
+    <script src="assets/js/navigation.js"></script>
+    <script>
+        function sw(tabIndex) {
+            let sections = document.querySelectorAll('.section');
+            sections.forEach((section, index) => {
+                section.classList.remove('active');
+                if (index === tabIndex - 1) {
+                    section.classList.add('active');
+                }
+            });
+            let tabs = document.querySelectorAll('.tab');
+            tabs.forEach((tab, index) => {
+                tab.classList.remove('active');
+                if (index === tabIndex - 1) {
+                    tab.classList.add('active');
+                }
+            });
+        }
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+        }
+    </script>
+</body>
+</html>
