@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SVM Iris Classification Study Guide</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .dark-mode { background-color: #222; color: #fff; }
+        .badge-blue { background-color: #007bff; color: white; padding: 5px; border-radius: 3px; }
+        .badge-green { background-color: #28a745; color: white; padding: 5px; border-radius: 3px; }
+        .badge-amber { background-color: #ffc107; color: black; padding: 5px; border-radius: 3px; }
+        .badge-purple { background-color: #6f42c1; color: white; padding: 5px; border-radius: 3px; }
+        .section { display: none; }
+        .active { display: block; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>SVM Iris Classification Study Guide</h1>
+        <button id="darkModeToggle">Toggle Dark Mode</button>
+    </header>
+    <nav>
+        <button onclick="show(0)">1. Imports & Data</button>
+        <button onclick="show(1)">2. Scaling</button>
+        <button onclick="show(2)">3. Boundary Plot</button>
+        <button onclick="show(3)">4. Linear Kernel</button>
+        <button onclick="show(4)">5. Confusion Matrix</button>
+        <button onclick="show(5)">6. Cross-Validation</button>
+        <button onclick="show(6)">7. Teacher Q&A</button>
+    </nav>
+    <div id="content">
+        <div class="section active">
+            <h2>1. Imports & Data</h2>
+            <div class="explain-box">
+                <h3>Code:</h3>
+                <code class="kw">import</code> <code class="fn">pandas</code> as <code class="str">pd</code>
+                <br>
+                <code class="kw">import</code> <code class="fn">numpy</code> as <code class="str">np</code>
+                <br>
+                <code class="kw">import</code> <code class="fn">matplotlib.pyplot</code> as <code class="str">plt</code>
+                <p>Use the above imports to read and manipulate the dataset.</p>
+                <span class="badge badge-blue">Important</span>
+                <p>Databases and DataFrames are crucial for data manipulation in machine learning.</p>
+            </div>
+        </div>
+        <div class="section">
+            <h2>2. Scaling</h2>
+            <div class="explain-box">
+                <h3>Code:</h3>
+                <code class="kw">from</code> <code class="fn">sklearn.preprocessing</code> <code class="kw">import</code> <code class="fn">StandardScaler</code>
+                <p>Scaling your data is essential for SVM performance.</p>
+            </div>
+        </div>
+        <div class="section">
+            <h2>3. Boundary Plot</h2>
+            <div class="visual-box">
+                <p>Visual representation of SVM decision boundary is as follows:</p>
+                <img src="boundary_plot.png" alt="Boundary Plot">
+            </div>
+        </div>
+        <div class="section">
+            <h2>4. Linear Kernel</h2>
+            <div class="explain-box">
+                <h3>Code:</h3>
+                <code class="kw">from</code> <code class="fn">sklearn.svm</code> <code class="kw">import</code> <code class="fn">SVC</code>
+                <p>The SVC class with a linear kernel enables linear classification.</p>
+            </div>
+        </div>
+        <div class="section">
+            <h2>5. Confusion Matrix</h2>
+            <div class="visual-box">
+                <p>A confusion matrix to evaluate the model performance:</p>
+                <img src="confusion_matrix.png" alt="Confusion Matrix">
+            </div>
+        </div>
+        <div class="section">
+            <h2>6. Cross-Validation</h2>
+            <div class="explain-box">
+                <h3>Code:</h3>
+                <code class="kw">from</code> <code class="fn">sklearn.model_selection</code> <code class="kw">import</code> <code class="fn">cross_val_score</code>
+                <p>Helps to ensure that the model is robust and not overfitting.</p>
+            </div>
+        </div>
+        <div class="section">
+            <h2>7. Teacher Q&A</h2>
+            <div class="qa-block">
+                <h3>Question: What if the data is not linearly separable?</h3>
+                <p>Use kernel trick methods to transform input space.</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        function show(index) {
+            const sections = document.querySelectorAll('.section');
+            sections.forEach((section, i) => {
+                section.classList.toggle('active', i === index);
+            });
+        }
+        document.getElementById('darkModeToggle').addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+        });
+    </script>
+</body>
+</html>
